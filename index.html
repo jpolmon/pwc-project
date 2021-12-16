@@ -107,26 +107,39 @@
 				display: none !important;
 			}
 		</style>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">		
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+		<script src="https://kit.fontawesome.com/2a4ce623b7.js" crossorigin="anonymous"></script>		
 		<script type="text/javascript" src="questions.js"></script>
 	</head>
 	<body>
 		<div id="app">
-			<div id="title">
-				<h1 class="title has-text-warning-dark has-text-centered">Sales Order Analysis for Company XYZ</h1>
-				<h3>FE Digital Camp - Mini Game 1</h3>
-			</div>
-			<div id="gamemodeHolder">
-				<div>Gamemode: </div>
-				<div>
-					<select id="gamemode">
-						<option value="rounds">Rounds</option>
-						<option value="countdown">Countdown</option>
-						<option value="casual">Casual</option>
-					</select>
-				</div>				
-				<div id="gamemodeDescription"></div>
-			</div>
+			<nav class="navbar mt-4" role="navigation" aria-label="main navigation">
+				<div class="navbar-brand">
+					<h1 class="title has-text-warning-dark has-text-centered">Sales Order Analysis for Company XYZ</h1>
+				</div>
+				<div class="navbar-end">
+					<p class="buttons">
+						<a class="button is-warning is-light is-outlined" href="https://www.google.com/" target="_blank">
+							<span class="icon is-large">
+								<i class="fas fa-info"></i>
+							</span>
+						</a>
+						<a class="button is-warning is-light is-outlined" href="https://www.google.com/" target="_blank">
+							<span class="icon is-large">
+								<i class="fas fa-medal"></i>
+							</span>
+						</a>
+						<a class="button is-warning is-light is-outlined" href="https://www.google.com/" target="_blank">
+							<span class="icon is-large">
+								<i class="fas fa-home"></i>
+							</span>
+						</a>
+					</p>
+				</div>
+			</nav>
+			
+			<div class="is-size-4 has-text-centered my-4">FE Digital Camp - Mini Game 1</div>
+			
 			<div class="level m-3 ">
 				<div class="level-item has-text-centered">
 					<button data-value="rounds" id="roundsBtn" class="button is-warning is-light is-outlined">Rounds</button>
@@ -138,8 +151,26 @@
 					<button data-value="casual" id="casualBtn" class="button is-warning is-light is-outlined">Casual</button>
 				</div>				
 			</div>
-			<div id="description"></div>
 
+			<div id="description" class="has-text-centered m-5"></div>
+
+			<div class="container">
+				<button id="startBtn" class="button is-large is-warning is-light is-outlined mt-5" disabled>    Let's Begin!    </button>	
+			</div>
+
+
+
+			<div id="gamemodeHolder">
+				<div>Gamemode: </div>
+				<div>
+					<select id="gamemode">
+						<option value="rounds">Rounds</option>
+						<option value="countdown">Countdown</option>
+						<option value="casual">Casual</option>
+					</select>
+				</div>				
+				<div id="gamemodeDescription"></div>
+			</div>
 			<div id="problemStatement">
 				<h3>Problem Statement</h3>
 				<p>Your Client is a segment made up of many smaller businesses. Recently, they have been trying to get a better sense of their sales order volumes across all of the groups. Specifically, they are interested in seeing a summary of sales orders by customers and if those customers span across multiple groups so they can make strategic decisions on how to realign their salesmen and customer service group.</p>
