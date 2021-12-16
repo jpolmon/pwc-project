@@ -9,6 +9,12 @@ const scoreboardBackground = document.getElementById('scoreboardBackground');
 const scoreboardClose = document.getElementById('scoreboardClose');
 const descriptionBox = document.getElementById('description');
 
+if (!descriptionBox.innerText === "") {
+  descriptionBox.style.display = "block";
+} else {
+  descriptionBox.style.display = "none";
+}
+
 // Opens the scoreboard modal
 function renderScoreboard() {
   scoreboardModal.classList.add('is-active');
