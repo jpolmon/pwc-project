@@ -4,10 +4,14 @@ const rounds = document.getElementById('roundsBtn');
 const countdown = document.getElementById('countdownBtn');
 const casual = document.getElementById('casualBtn');
 const start = document.getElementById('startBtn');
+
 const scoreboardModal = document.getElementById('scoreboard');
 const scoreboardBackground = document.getElementById('scoreboardBackground');
 const scoreboardClose = document.getElementById('scoreboardClose');
 const descriptionBox = document.getElementById('description');
+const resultBox = document.getElementById('resultBox');
+const gameInfoBox = document.getElementById('gameStats');
+const hiddenAtStart = document.querySelectorAll('.hiddenAtStart');
 
 if (!descriptionBox.innerText === "") {
   descriptionBox.style.display = "block";
@@ -85,7 +89,10 @@ function casualInfo() {
 
 // Function that will run when the start button is clicked, right now it just removes it from the screen.
 function startGame() {
-  start.style.display = 'none'
+  start.style.display = 'none';
+  for (const el of hiddenAtStart) {
+    el.classList.remove('hidden');
+  }
 }
 
 // Event listeners for all buttons

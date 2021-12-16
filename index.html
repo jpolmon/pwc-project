@@ -4,6 +4,14 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<style>
+			body {
+				background-image: url("./assets/images/background.png");
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+				background-color: white;
+			}
+
 			#app {
 				display: grid;
 				height: 100%;
@@ -80,14 +88,6 @@
 				transform: translate(-50%, -50%);
 			}
 
-			#correct {
-				color: green;
-			}
-
-			#incorrect {
-				color: red;
-			}
-
 			#gameInfoHolder {
 				margin: 0 auto 30px;
 				align-self: end;
@@ -100,11 +100,8 @@
 				grid-column-gap: 5px;
 			}
 
-
-
-
 			.hidden {
-				display: none !important;
+				visibility: hidden !important
 			}
 		</style>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
@@ -114,38 +111,42 @@
 	<body>
 		<div id="app">
 			<!-- Nav bar with page title -->
-			<nav class="navbar mt-4" role="navigation" aria-label="main navigation">
-				<div class="navbar-brand">
-					<h1 class="title has-text-warning-dark has-text-centered">Sales Order Analysis for Company XYZ</h1>
-				</div>
-				<div class="navbar-end">
-					<p class="buttons">
-						<a class="button is-warning is-light is-outlined" href="https://www.google.com/" target="_blank">
-							<span class="icon is-large">
-								<i class="fas fa-info"></i>
-							</span>
-						</a>
-						<button id="scoreboardBtn" class="button is-warning is-light is-outlined">
-							<span class="icon is-large">
-								<i class="fas fa-medal"></i>
-							</span>
-						</button>
-						<a class="button is-warning is-light is-outlined" href="https://www.google.com/" target="_blank">
-							<span class="icon is-large">
-								<i class="fas fa-home"></i>
-							</span>
-						</a>
-					</p>
-				</div>
-			</nav>
+			<div class="box mt-4">
+				<nav class="navbar" role="navigation" aria-label="main navigation">
+					<div class="navbar-brand">
+						<h1 class="title has-text-warning-dark has-text-centered mt-1">Sales Order Analysis for Company XYZ</h1>
+					</div>
+					<div class="navbar-end">
+						<p class="buttons">
+							<a class="button is-warning is-light is-outlined" href="https://www.google.com/" target="_blank">
+								<span class="icon is-large">
+									<i class="fas fa-info"></i>
+								</span>
+							</a>
+							<button id="scoreboardBtn" class="button is-warning is-light is-outlined">
+								<span class="icon is-large">
+									<i class="fas fa-medal"></i>
+								</span>
+							</button>
+							<a class="button is-warning is-light is-outlined" href="https://www.google.com/" target="_blank">
+								<span class="icon is-large">
+									<i class="fas fa-home"></i>
+								</span>
+							</a>
+						</p>
+					</div>
+				</nav>
+			</div>
 			
 			<!-- Game title -->
-			<div class="is-size-4 has-text-centered my-4">FE Digital Camp - Mini Game 1</div>
+			<div class="container my-4">
+				<div class="box is-size-4 has-text-centered my-4">FE Digital Camp - Mini Game 1</div>
+			</div>
 			
 			<!-- Buttons to select game mode -->
 			<div class="container box has-items-centered has-background-light">
-				<div class="has-text-centered">Please select a game mode to get started!</div>
-				<div class="buttons m-3 has-text-centered">				
+				<div class="has-text-centered mt-3">Please select a game mode to get started!</div>
+				<div class="buttons m-4 has-text-centered">				
 						<button data-value="rounds" id="roundsBtn" class="button is-warning is-light is-outlined mx-3">Rounds</button>				
 						<button data-value="countdown" id="countdownBtn" class="button is-warning is-light is-outlined mx-3">Countdown</button>			
 						<button data-value="casual" id="casualBtn" class="button is-warning is-light is-outlined mx-3">Casual</button>							
@@ -153,7 +154,7 @@
 			</div>
 
 			<!-- Game mode description -->
-			<div class="container" display="none">
+			<div class="container">
 				<div id="description" class="box has-text-centered m-5 has-background-light" display="none"></div>
 			</div>
 
@@ -180,6 +181,29 @@
 				<button id="scoreboardClose" class="modal-close is-large" aria-label="close"></button>
 			</div>
 
+			<!-- Result of answer -->
+			<div id="resultBox" class="m-5">
+				<div id="correctBox" class="box has-background-success has-text-white has-text-centered is-size-4 hidden hiddenAtStart">Correct</div>
+				<div id="incorrectBox" class="box has-background-danger has-text-white has-text-centered is-size-4 hidden hiddenAtStart">Incorrect</div>				
+			</div>
+
+			<!-- game info -->
+			<div id="gameInfoBox" class="container">
+				<div id="gameStats" class="box hidden hiddenAtStart">
+					<div class="level">
+						<div class="level-left"><b>Round Time:</b></div><div class="level-right">00:00:00</div>
+					</div>
+					<div class="level">
+						<div class="level-left"><b>Game Time:</b></div><div class="level-right">00:00:00</div>
+					</div>
+					<div class="level">
+						<div class="level-left"><b>Rounds Completed:</b></div><div class="level-right">0</div>
+					</div>
+					<div class="level" id="averageTime">
+						<div class="level-left mr-6"><b>Average Time per Round:</b></div><div class="level-right">00:00:00.00</div>
+					</div>					
+				</div>
+			</div>
 
 			<div id="gamemodeHolder">
 				<div>Gamemode: </div>
@@ -225,10 +249,8 @@
 					<div class="gameTime"><b>Game Time:</b></div><div id="gameTime" class="gameTime">00:00:00</div>
 					<div class="roundsCompleted"><b>Rounds Completed:</b></div><div id="roundsCompleted" class="roundsCompleted">0</div>
 					<div class="avgTimePerRound"><b>Average Time per Round:</b></div><div id="avgTimePerRound" class="avgTimePerRound">00:00:00.00</div>
-
 				</div>
 			</div>
-		</div>
 		<script src="app.js"></script>
 		<script type="text/javascript" src="sample.js"></script>
 	</body>
