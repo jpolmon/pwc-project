@@ -113,6 +113,7 @@
 	</head>
 	<body>
 		<div id="app">
+			<!-- Nav bar with page title -->
 			<nav class="navbar mt-4" role="navigation" aria-label="main navigation">
 				<div class="navbar-brand">
 					<h1 class="title has-text-warning-dark has-text-centered">Sales Order Analysis for Company XYZ</h1>
@@ -124,11 +125,11 @@
 								<i class="fas fa-info"></i>
 							</span>
 						</a>
-						<a class="button is-warning is-light is-outlined" href="https://www.google.com/" target="_blank">
+						<button id="scoreboardBtn" class="button is-warning is-light is-outlined">
 							<span class="icon is-large">
 								<i class="fas fa-medal"></i>
 							</span>
-						</a>
+						</button>
 						<a class="button is-warning is-light is-outlined" href="https://www.google.com/" target="_blank">
 							<span class="icon is-large">
 								<i class="fas fa-home"></i>
@@ -138,8 +139,10 @@
 				</div>
 			</nav>
 			
+			<!-- Game title -->
 			<div class="is-size-4 has-text-centered my-4">FE Digital Camp - Mini Game 1</div>
 			
+			<!-- Buttons to select game mode -->
 			<div class="level m-3 ">
 				<div class="level-item has-text-centered">
 					<button data-value="rounds" id="roundsBtn" class="button is-warning is-light is-outlined">Rounds</button>
@@ -152,12 +155,31 @@
 				</div>				
 			</div>
 
+			<!-- Game mode description -->
 			<div id="description" class="has-text-centered m-5"></div>
 
+			<!-- Start Button -->
 			<div class="container">
 				<button id="startBtn" class="button is-large is-warning is-light is-outlined mt-5" disabled>    Let's Begin!    </button>	
 			</div>
 
+			<!-- Scoreboard Modal Content -->
+			<div id="scoreboard" class="modal">
+				<div id="scoreboardBackground" class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head">
+						<p class="modal-card-title">High Scores</p>
+					</header>
+					<section class="modal-card-body">
+						<p>Sample Score 1</p>
+						<p>Sample Score 2</p>
+						<p>Sample Score 3</p>
+						<p>Sample Score 4</p>
+						<p>Sample Score 5</p>
+					</section>
+				</div>
+				<button id="scoreboardClose" class="modal-close is-large" aria-label="close"></button>
+			</div>
 
 
 			<div id="gamemodeHolder">
