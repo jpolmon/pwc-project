@@ -9,6 +9,12 @@ const scoreboardBackground = document.getElementById('scoreboardBackground');
 const scoreboardClose = document.getElementById('scoreboardClose');
 const descriptionBox = document.getElementById('description');
 
+if (!descriptionBox.innerText === "") {
+  descriptionBox.style.display = "block";
+} else {
+  descriptionBox.style.display = "none";
+}
+
 // Opens the scoreboard modal
 function renderScoreboard() {
   scoreboardModal.classList.add('is-active');
@@ -32,6 +38,10 @@ function roundsInfo() {
   }
   // Enables the start button to be pressed
   start.disabled = false;
+  // Making the description box visible if it isn't already
+  if (descriptionBox.style.display === "none") {
+    descriptionBox.style.display = "block";
+  }
 }
 
 function countdownInfo() {
@@ -47,6 +57,10 @@ function countdownInfo() {
   }
   // Enables the start button to be pressed
   start.disabled = false;
+  // Making the description box visible if it isn't already
+  if (descriptionBox.style.display === "none") {
+    descriptionBox.style.display = "block";
+  }
 }
 
 // Called when the casual mode is selected
@@ -63,6 +77,10 @@ function casualInfo() {
   }
   // Enables the start button to be pressed
   start.disabled = false;
+  // Making the description box visible if it isn't already
+  if (descriptionBox.style.display === "none") {
+    descriptionBox.style.display = "block";
+  }
 }
 
 // Function that will run when the start button is clicked, right now it just removes it from the screen.
