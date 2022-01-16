@@ -101,7 +101,20 @@
 			}
 
 			.hidden {
-				visibility: hidden !important
+				visibility: hidden !important;
+			}
+
+			.rotate {
+				animation: rotation 2s infinite linear;
+			}
+
+			@keyframes rotation {
+				from { 
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(359deg);
+				}
 			}
 		</style>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
@@ -109,9 +122,9 @@
 		<script type="text/javascript" src="questions.js"></script>
 	</head>
 	<body>
-		<div id="app">
+		<img id="app">
 			<!-- Nav bar with page title -->
-			<div class="box mt-4 has-background-light">
+			<div class="box m-4 has-background-light">
 				<nav class="navbar has-background-light" role="navigation" aria-label="main navigation">
 					<div class="navbar-brand">
 						<h1 class="title has-text-warning-dark has-text-centered mt-1">Sales Order Analysis for Company XYZ</h1>
@@ -142,6 +155,10 @@
 			<div class="container my-4">
 				<div class="box is-size-4 has-text-centered my-4 has-background-light">FE Digital Camp - Mini Game 1</div>
 			</div>
+
+			<div class="container">
+				<img src="assets/images/DC_black.png" class="rotate hidden" id="DC_black" alt="carabiner" width="70" height="70">
+			</div>
 			
 			<!-- Buttons to select game mode -->
 			<div class="container box has-items-centered has-background-light">
@@ -159,7 +176,7 @@
 			</div>
 
 			<!-- Start Button -->
-			<div class="container">
+			<div class="container has-text-centered">
 				<button id="startBtn" class="button is-large is-warning is-light is-outlined mt-5" disabled>    Let's Begin!    </button>	
 			</div>
 
